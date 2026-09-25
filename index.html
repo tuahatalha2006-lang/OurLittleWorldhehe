@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>For My Rushi Gushi 💗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- floating ambient petals/particles canvas layer -->
+<div class="petal-field" id="petalField" aria-hidden="true"></div>
+
+<!-- progress pill -->
+<div class="progress-pill" id="progressPill">
+  <span class="progress-heart">💗</span>
+  <span id="progressText">0 / 11 surprises found</span>
+</div>
+
+<!-- floating music player -->
+<div class="music-player" id="musicPlayer">
+  <button class="music-toggle" id="musicToggle" aria-label="Play our song">
+    <svg id="playIcon" viewBox="0 0 24 24" width="18" height="18"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+    <svg id="pauseIcon" viewBox="0 0 24 24" width="18" height="18" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
+  </button>
+  <div class="music-info">
+    <div class="music-title" id="musicTitle">Afreen Afreen</div>
+    <div class="music-sub" id="musicSub">our song, kind of</div>
+  </div>
+  <button class="music-next" id="musicNext" aria-label="Next song" title="switch song">⏭</button>
+  <div class="music-notes" id="musicNotes"></div>
+  <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.6" aria-label="Volume">
+  <audio id="bgAudio" src="our-song.mp3" preload="none" loop></audio>
+</div>
+
+<!-- ============ SCREEN 0 : GATE / ENTRANCE ============ -->
+<section class="screen gate-screen" id="gateScreen">
+  <div class="sparkle-layer" aria-hidden="true"></div>
+  <div class="gate-content">
+    <p class="gate-line line1">Hey, My Rushi Gushi...</p>
+    <p class="gate-line line2">I made something for you.</p>
+    <p class="gate-line line3">Not just a birthday message...</p>
+    <p class="gate-line line4">A little world that belongs to my jaanu.</p>
+    <button class="enter-btn line5" id="enterBtn">
+      <span>Enter Our Little World</span> 💗
+    </button>
+  </div>
+</section>
+
+<!-- ============ MAIN WORLD (hidden until entered) ============ -->
+<main id="world" class="world">
+
+  <!-- ---- HOME ---- -->
+  <section class="screen home-screen" id="homeScreen">
+    <div class="home-flowers" aria-hidden="true">🌷🪻🌹</div>
+    <h1 class="home-title">For My Rushi Gushi <span class="heart-glow">💗</span></h1>
+    <p class="home-sub">I made a little world for you...</p>
+    <p class="home-note">every corner of it has something for you to find, mera chanda. take your time — scroll, tap, open everything. there's no rush, this whole world is yours today hehe.</p>
+    <div class="scroll-hint">
+      <span>scroll down</span>
+      <div class="scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- ---- CAKE ---- -->
+  <section class="screen cake-screen" id="cakeSection">
+    <h2 class="section-title">Make a wish, meri jaanu 🕯️</h2>
+    <p class="section-hint">blow out the candles — tap each one</p>
+    <div class="cake-wrap">
+      <div class="candles" id="candles">
+        <div class="candle" data-candle="1"><span class="flame"></span></div>
+        <div class="candle" data-candle="2"><span class="flame"></span></div>
+        <div class="candle" data-candle="3"><span class="flame"></span></div>
+        <div class="candle" data-candle="4"><span class="flame"></span></div>
+        <div class="candle" data-candle="5"><span class="flame"></span></div>
+      </div>
+      <div class="cake-body">
+        <div class="cake-layer top"></div>
+        <div class="cake-layer bottom"></div>
+        <div class="cake-plate"></div>
+      </div>
+    </div>
+    <div class="cake-reveal" id="cakeReveal">
+      <p class="cake-banner">HAPPY BIRTHDAY RUSHNA 🎉</p>
+      <button class="pill-btn" id="wishMadeBtn">I made my wish 💗</button>
+      <p class="cake-final" id="cakeFinal">Whatever you wished for — I hope it's already halfway to you. And if it was about us, mera bacha, that one's already coming true InshAllah.</p>
+    </div>
+  </section>
+
+  <!-- ---- GIFTS ---- -->
+  <section class="screen gifts-screen" id="giftsSection">
+    <h2 class="section-title">A Few Little Gifts For My Jaanu 🎁</h2>
+    <p class="section-hint">tap a box to open it</p>
+    <div class="gift-grid" id="giftGrid">
+      <div class="gift-box" data-gift="1">
+        <div class="gift-lid">🎁</div>
+        <div class="gift-label">a love letter</div>
+      </div>
+      <div class="gift-box" data-gift="2">
+        <div class="gift-lid">🎁</div>
+        <div class="gift-label">a memory</div>
+      </div>
+      <div class="gift-box" data-gift="3">
+        <div class="gift-lid">🎁</div>
+        <div class="gift-label">10 things</div>
+      </div>
+      <div class="gift-box" data-gift="4">
+        <div class="gift-lid">🎁</div>
+        <div class="gift-label">a surprise</div>
+      </div>
+      <div class="gift-box" data-gift="5">
+        <div class="gift-lid">🎁</div>
+        <div class="gift-label">a secret</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- FLOWER GARDEN ---- -->
+  <section class="screen garden-screen" id="gardenSection">
+    <h2 class="section-title">Your Little Garden 🌷🪻🌹</h2>
+    <p class="section-hint">find and tap every flower</p>
+    <div class="garden-bed" id="gardenBed"></div>
+    <p class="garden-complete" id="gardenComplete">You found all the flowers, my chanda 🌷💗</p>
+  </section>
+
+  <!-- ---- MEMORIES SCRAPBOOK ---- -->
+  <section class="screen memories-screen" id="memoriesSection">
+    <h2 class="section-title">Our Memories 📸</h2>
+    <div class="scrapbook" id="scrapbook">
+      <div class="scrapbook-page active" data-page="0">
+        <div class="polaroid"><img src="memory1.jpg" alt="us, in the mirror"></div>
+        <p class="page-title">the mirror one</p>
+        <p class="page-caption">us being us — wanted to hold your waist here. but yeah.</p>
+      </div>
+      <div class="scrapbook-page" data-page="1">
+        <div class="polaroid"><img src="memory2.jpg" alt="I dont care sunglasses photo"></div>
+        <p class="page-title">wanna be close again</p>
+        <p class="page-caption">the glasses filter lied — we clearly care.</p>
+      </div>
+      <div class="scrapbook-page" data-page="2">
+        <div class="polaroid"><img src="memory3.jpg" alt="henna peace sign close up"></div>
+        <p class="page-title">I love us</p>
+        <p class="page-caption">I want us to be like this forever hehe</p>
+      </div>
+      <div class="scrapbook-page" data-page="3">
+        <div class="polaroid"><img src="memory4.jpg" alt="peace sign close photo"></div>
+        <p class="page-title">one of your fav pics of us</p>
+        <p class="page-caption">you, so cutu, so pyaari, completely mine.</p>
+      </div>
+      <div class="scrapbook-page" data-page="4">
+        <div class="polaroid"><img src="memory5.jpg" alt="close portrait together"></div>
+        <p class="page-title">just us</p>
+        <p class="page-caption">no fikar, no plan, just us leaning into the frame and me trying not to smile too much. (didn't work)</p>
+      </div>
+    </div>
+    <div class="scrapbook-nav">
+      <button id="prevMemory" class="nav-btn" aria-label="previous memory">←</button>
+      <span id="memoryDots" class="memory-dots"></span>
+      <button id="nextMemory" class="nav-btn" aria-label="next memory">NEXT MEMORY →</button>
+    </div>
+  </section>
+
+  <!-- ---- REASONS I LOVE YOU ---- -->
+  <section class="screen reasons-screen" id="reasonsSection">
+    <h2 class="section-title">Reasons I Love My Rushi Gushi 💗</h2>
+    <p class="section-hint" id="reasonsHint">tap the heart</p>
+    <button class="big-heart" id="bigHeart">💗</button>
+    <div class="reason-card" id="reasonCard">
+      <p id="reasonText"></p>
+    </div>
+    <p class="reason-count" id="reasonCount"></p>
+  </section>
+
+  <!-- ---- COUPLE QUIZ ---- -->
+  <section class="screen quiz-screen" id="quizSection">
+    <h2 class="section-title">How Well Do You Know Us? 👀</h2>
+    <div class="quiz-box" id="quizBox">
+      <p class="quiz-q" id="quizQ"></p>
+      <div class="quiz-options" id="quizOptions"></div>
+    </div>
+    <div class="quiz-result" id="quizResult">
+      <p>Wrong. The answer is that we're stuck with each other forever hahahhaah. 😭💗</p>
+      <button class="pill-btn" id="quizReplay">play again</button>
+    </div>
+  </section>
+
+  <!-- ---- NIGHT SKY ---- -->
+  <section class="screen night-screen" id="nightSection">
+    <div class="stars" id="starsField"></div>
+    <div class="moon">🌙</div>
+    <h2 class="night-message">Even if the whole sky was mine,<br>I'd still choose you.</h2>
+    <p class="section-hint light">tap the stars</p>
+  </section>
+
+  <!-- ---- SECRET LOCKED SECTION ---- -->
+  <section class="screen secret-screen" id="secretSection">
+    <div class="lockbox" id="lockbox">
+      <h2 class="section-title">There's One More Thing... 🔐</h2>
+      <div class="lock-icon" id="lockIcon">🔒</div>
+      <button class="pill-btn glow" id="unlockBtn">Try to unlock it 💗</button>
+    </div>
+    <div class="final-reveal" id="finalReveal">
+      <h2 class="final-title">Happy Birthday, My Rushna ❤️</h2>
+      <p class="final-text">
+        Of everything in this little world — the flowers, the gifts, the songs — this is the part I actually sat and thought about the longest. Because it's the one that isn't a game.
+      </p>
+      <p class="final-text">
+        I love you. Not in a small, easy way but in the way where you've genuinely changed what my normal days feel like. Being your person, being the one you come to in every situation, being your hubby — it's the best thing I didn't know I needed until I had it, and I want it to last forever now.
+      </p>
+      <p class="final-text">
+        So here's to another year of you, meri haseen si begum ji. Another year of pure love, new memories, moments close to each other, and a love that is gonna last forever InshAllah.
+      </p>
+      <p class="final-text signature">Happy birthday, Rushna. I love you to the moon and never back :) 🌷💗🪻</p>
+    </div>
+  </section>
+
+  <footer class="world-footer">
+    <p>made with too much love, for Rushna's little world 🌷💗🪻</p>
+  </footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
